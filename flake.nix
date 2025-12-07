@@ -7,6 +7,10 @@
 		url = "github:nix-community/disko";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	yandex-browser = {
+		url = "github:miuirussia/yandex-browser.nix";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -16,6 +20,9 @@
 			./configuration.nix
 			inputs.disko.nixosModules.disko
 		];
+		specialArgs = {
+			inherit inputs;
+		};
 	};
   };
 }
