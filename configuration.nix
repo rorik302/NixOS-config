@@ -44,14 +44,20 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.xserver.enable = true;
+  services.xserver.exportConfiguration = lib.mkForce true;
+	services.xserver.xkb.extraLayouts = {
+		custom_ru = {
+			description = "Custom RU layout";
+			languages = [ "rus" ];
+			symbolsFile = ./keymaps/custom_rus.xkb_symbols;
+		};
+		custom_us = {
+			description = "Custom US layout";
+			languages = [ "us" ];
+			symbolsFile = ./keymaps/custom_us.xkb_symbols;
+		};
+	};
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -77,6 +83,7 @@
     	tree
 	inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
 	firefox
+	yazi
     ];
     shell = pkgs.fish;
   };
