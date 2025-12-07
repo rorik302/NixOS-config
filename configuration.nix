@@ -76,6 +76,7 @@
 	ghostty
     	tree
 	inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
+	firefox
     ];
     shell = pkgs.fish;
   };
