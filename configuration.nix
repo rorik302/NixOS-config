@@ -72,8 +72,11 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
+    	fish
+	ghostty
+    	tree
     ];
+    shell = pkgs.fish;
   };
 
   # programs.firefox.enable = true;
@@ -104,6 +107,9 @@
   };
 
   services.displayManager.ly = {
+	enable = true;
+  };
+  programs.fish = {
 	enable = true;
   };
 
