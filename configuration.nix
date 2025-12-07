@@ -83,6 +83,8 @@
   environment.systemPackages = with pkgs; [
 	git
 	neovim
+	niri
+	ly
   ];
 
   programs.git = {
@@ -96,6 +98,13 @@
 			defaultBranch = "main";
 		};
 	};
+  };
+  programs.niri = {
+	enable = true;
+  };
+
+  services.displayManager.ly = {
+	enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
