@@ -85,6 +85,7 @@
 	firefox
 	yazi
 	pwvucontrol
+	kdePackages.dolphin
     ];
     shell = pkgs.fish;
   };
@@ -113,6 +114,10 @@
 	};
   };
   programs.niri = {
+	enable = true;
+  };
+
+  services.udisks2 = {
 	enable = true;
   };
 
