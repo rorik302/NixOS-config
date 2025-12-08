@@ -103,6 +103,7 @@
 	git
 	neovim
 	niri
+	xwayland-satellite
 	ly
   ];
 
