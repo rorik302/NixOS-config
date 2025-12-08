@@ -86,8 +86,13 @@
 	yazi
 	pwvucontrol
 	kdePackages.dolphin
+	bluetui
     ];
     shell = pkgs.fish;
+  };
+
+  hardware.bluetooth = {
+	enable = true;
   };
 
   # programs.firefox.enable = true;
