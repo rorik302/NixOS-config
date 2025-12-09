@@ -133,6 +133,10 @@
   programs.fish = {
 	enable = true;
   };
+  programs.neovim = {
+	enable = true;
+	defaultEditor = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
