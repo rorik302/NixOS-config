@@ -1,0 +1,12 @@
+input {
+	keyboard {
+		xkb {
+			layout "custom_us,custom_ru"
+			options "grp:alt_shift_toggle"
+		}
+
+		repeat-delay 300
+		repeat-rate 80
+		numlock
+	}
+}

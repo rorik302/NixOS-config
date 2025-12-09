@@ -1,0 +1,28 @@
+window-rule {
+	geometry-corner-radius 4
+	clip-to-geometry true
+}
+
+window-rule {
+	match app-id="Yandex-browser"
+
+	open-maximized true
+}
+
+window-rule {
+	match app-id="com.mitchellh.ghostty" is-active=false
+
+	opacity 0.95
+}
+
+window-rule {
+	match title=r#"^.* - YouTube$|^Сериал.*смотреть онлайн.*$|^.*\| Tape Operator$"#
+	exclude app-id="Yandex-browser"
+
+	open-floating true
+	open-focused false
+	default-column-width { proportion 0.3; }
+	default-window-height { proportion 0.3; }
+	default-floating-position x=0 y=0 relative-to="bottom-right"
+	geometry-corner-radius 0
+}

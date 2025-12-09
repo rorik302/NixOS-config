@@ -1,0 +1,13 @@
+include "binds.kdl"
+include "cursor.kdl"
+include "gestures.kdl"
+include "input.kdl"
+include "layout.kdl"
+include "output.kdl"
+include "window_rules.kdl"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
