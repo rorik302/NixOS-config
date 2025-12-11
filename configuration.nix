@@ -103,6 +103,7 @@
 	git
 	neovim
 	niri
+	inputs.niri-float-sticky.packages.${system}.default
 	xwayland-satellite
 	ly
   ];

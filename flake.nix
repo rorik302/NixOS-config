@@ -15,6 +15,9 @@
 		url = "github:miuirussia/yandex-browser.nix";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	niri-float-sticky = {
+		url = "github:probeldev/niri-float-sticky";
+	};
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
