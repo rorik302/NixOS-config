@@ -103,9 +103,10 @@
 	git
 	neovim
 	niri
-	inputs.niri-float-sticky.packages.${system}.default
+	inputs.niri-float-sticky.packages.${stdenv.hostPlatform.system}.default
 	xwayland-satellite
 	ly
+	wl-kbptr
   ];
 
   programs.git = {

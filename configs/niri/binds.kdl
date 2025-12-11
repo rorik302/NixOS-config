@@ -10,8 +10,9 @@ binds {
 	Mod+Period		{ expel-window-from-column; }
 
 	// Apps
-	Mod+T hotkey-overlay-title="Open a Terminal: Ghostty"	{ spawn "ghostty"; }
-	Mod+B hotkey-overlay-title="Open browser"		{ spawn "yandex-browser-stable"; }
+	Mod+T	{ spawn "ghostty"; }
+	Mod+B	{ spawn "yandex-browser-stable"; }
+	Mod+G 	{ spawn "wl-kbptr";}
 
 	// Focus
 	Mod+H	{ focus-column-left; }
