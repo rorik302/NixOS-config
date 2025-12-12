@@ -1,1 +1,2 @@
 spawn-at-startup "niri-float-sticky"
+spawn-at-startup "awww-daemon"

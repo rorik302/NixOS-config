@@ -107,6 +107,7 @@
 	xwayland-satellite
 	ly
 	wl-kbptr
+	inputs.awww.packages.${stdenv.hostPlatform.system}.awww
   ];
 
   programs.git = {

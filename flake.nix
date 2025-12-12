@@ -18,6 +18,9 @@
 	niri-float-sticky = {
 		url = "github:probeldev/niri-float-sticky";
 	};
+	awww = { 
+		url = "git+https://codeberg.org/LGFae/awww";
+	};
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
