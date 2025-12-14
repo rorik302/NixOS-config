@@ -22,4 +22,9 @@
 		source = config.lib.file.mkOutOfStoreSymlink "/home/rorik/nixos-config/configs/ghostty";
 		recursive = true;
 	};
+
+	xdg.configFile."fish" = {
+		source = config.lib.file.mkOutOfStoreSymlink "/home/rorik/nixos-config/configs/fish";
+		recursive = true;
+	};
 }
