@@ -1,0 +1,6 @@
+font-size = 10
+
+keybind = ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+theme = Nord

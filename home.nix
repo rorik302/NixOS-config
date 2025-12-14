@@ -17,4 +17,9 @@
 		source = config.lib.file.mkOutOfStoreSymlink "/home/rorik/nixos-config/configs/wl-kbptr";
 		recursive = true;
 	};
+
+	xdg.configFile."ghostty" = {
+		source = config.lib.file.mkOutOfStoreSymlink "/home/rorik/nixos-config/configs/ghostty";
+		recursive = true;
+	};
 }
