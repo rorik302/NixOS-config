@@ -108,6 +108,7 @@
 	ly
 	wl-kbptr
 	inputs.awww.packages.${stdenv.hostPlatform.system}.awww
+	lazygit
   ];
 
   programs.git = {

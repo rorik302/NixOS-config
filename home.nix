@@ -6,6 +6,7 @@ let
 	configs = {
 		fish = "fish";
 		ghostty = "ghostty";
+		lazygit = "lazygit";
 		niri = "niri";
 		wl-kbptr = "wl-kbptr";
 	};
