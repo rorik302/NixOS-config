@@ -109,6 +109,7 @@
 	wl-kbptr
 	inputs.awww.packages.${stdenv.hostPlatform.system}.awww
 	lazygit
+	zoxide
   ];
 
   programs.git = {
