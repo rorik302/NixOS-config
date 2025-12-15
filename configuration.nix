@@ -112,6 +112,7 @@
 	eza
 	ripgrep
 	fd
+	fzf
   ];
 
   programs.git = {
