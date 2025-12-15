@@ -110,6 +110,8 @@
 	lazygit
 	zoxide
 	eza
+	ripgrep
+	fd
   ];
 
   programs.git = {
