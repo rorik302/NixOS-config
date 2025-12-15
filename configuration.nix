@@ -80,7 +80,6 @@
     packages = with pkgs; [
     	fish
 	ghostty
-    	tree
 	inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
 	firefox
 	yazi
@@ -110,6 +109,7 @@
 	inputs.awww.packages.${stdenv.hostPlatform.system}.awww
 	lazygit
 	zoxide
+	eza
   ];
 
   programs.git = {
