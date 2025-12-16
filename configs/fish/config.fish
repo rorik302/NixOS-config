@@ -10,6 +10,9 @@ if status is-interactive
 	set -x FZF_CTRL_T_OPTS "--preview 'bat --color always --style numbers {}'"
 	set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND "--type d"
 
+
+	bind \cg fzfrg
+
 	alias ls="eza --header --group-directories-first --icons"
 	alias tree="eza --tree --group-directories-first --icons --long"
 end
