@@ -93,6 +93,7 @@
   hardware.bluetooth = {
 	enable = true;
   };
+  hardware.i2c.enable = true;
 
   # programs.firefox.enable = true;
 
@@ -114,6 +115,8 @@
 	fd
 	fzf
 	bat
+	ddcutil
+	i2c-tools
   ];
 
   programs.git = {
