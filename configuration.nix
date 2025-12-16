@@ -113,6 +113,7 @@
 	ripgrep
 	fd
 	fzf
+	bat
   ];
 
   programs.git = {
