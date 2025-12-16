@@ -117,6 +117,7 @@
 	bat
 	ddcutil
 	i2c-tools
+	sunsetr
   ];
 
   programs.git = {
