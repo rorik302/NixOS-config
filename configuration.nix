@@ -76,7 +76,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rorik = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "i2c" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     	fish
 	ghostty
