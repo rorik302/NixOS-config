@@ -21,6 +21,10 @@
 	awww = { 
 		url = "git+https://codeberg.org/LGFae/awww";
 	};
+	sysc-greet = {
+		url = "github:Nomadcxx/sysc-greet";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -38,6 +42,7 @@
 					backupFileExtension = "backup";
 				};
 			}
+			inputs.sysc-greet.nixosModules.default
 		];
 		specialArgs = {
 			inherit inputs;

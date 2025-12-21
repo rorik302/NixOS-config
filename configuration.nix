@@ -140,9 +140,18 @@
 	enable = true;
   };
 
-  services.displayManager.ly = {
+  services.sysc-greet = {
 	enable = true;
+	compositor = "niri";
+
+	settings = {
+		initial_session = {
+			command = "niri-session";
+			user = "rorik";
+		};
+	};
   };
+
   programs.fish = {
 	enable = true;
   };
