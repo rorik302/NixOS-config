@@ -118,6 +118,7 @@
 	ddcutil
 	i2c-tools
 	sunsetr
+	python3
   ];
 
   programs.git = {
