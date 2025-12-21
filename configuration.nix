@@ -60,7 +60,19 @@
 	};
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplip ];
+  hardware.printers = { 
+  	ensurePrinters = [{
+		name = "HP_M127fn";
+		deviceUri = "hp:/usb/HP_LaserJet_Pro_MFP_M127fn?serial=CNB9HCH1NG";
+		model = "HP/hp-laserjet_pro_mfp_m127fn.ppd.gz";
+		ppdOptions = {
+			PageSize = "A4";
+		};
+	}];
+	ensureDefaultPrinter = "HP_M127fn";
+  };
 
   # Enable sound.
   # services.pulseaudio.enable = true;
