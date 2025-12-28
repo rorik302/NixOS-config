@@ -131,6 +131,7 @@
 	i2c-tools
 	sunsetr
 	python3
+	telegram-desktop
   ];
 
   programs.git = {
