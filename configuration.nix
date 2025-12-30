@@ -132,6 +132,7 @@
 	sunsetr
 	python3
 	telegram-desktop
+	swayidle
   ];
 
   programs.git = {

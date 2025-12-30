@@ -1,0 +1,1 @@
+timeout 180 "ddcutil setvcp 10 0 --skip-ddc-checks" resume "ddcutil setvcp 10 50 --skip-ddc-checks"

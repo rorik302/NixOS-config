@@ -8,6 +8,7 @@ let
 		ghostty = "ghostty";
 		lazygit = "lazygit";
 		niri = "niri";
+		swayidle = "swayidle";
 		sunsetr = "sunsetr";
 		wl-kbptr = "wl-kbptr";
 	};
