@@ -133,7 +133,11 @@
 	python3
 	telegram-desktop
 	swayidle
+	usbutils
+  	kdePackages.kio-extras
   ];
+
+  services.gvfs.enable = true;
 
   programs.git = {
   	enable = true;
@@ -158,7 +162,6 @@
   services.sysc-greet = {
 	enable = true;
 	compositor = "niri";
-
 	settings = {
 		initial_session = {
 			command = "niri-session";
