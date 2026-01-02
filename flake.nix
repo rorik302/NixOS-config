@@ -3,6 +3,8 @@
 
   inputs = {
 	nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+	nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
 	disko = {
 		url = "github:nix-community/disko";
 		inputs.nixpkgs.follows = "nixpkgs";
@@ -27,25 +29,31 @@
 	};
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: 
+  let
+  	system = "x86_64-linux";
+	config = {
+		allowUnfree = true;
+	};
+	pkgs = import nixpkgs {
+		inherit system;
+		inherit config;
+	};
+  	pkgs-unstable = import nixpkgs-unstable {
+		inherit system;
+		inherit config;
+	};
+  in {
 	nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-		system = "x86_64-linux";
+		inherit system;
 		modules = [
 			./configuration.nix
 			inputs.disko.nixosModules.disko
 			inputs.home-manager.nixosModules.home-manager
-			{
-				home-manager = {
-					useGlobalPkgs = true;
-					useUserPackages = true;
-					users.rorik = import ./home.nix;
-					backupFileExtension = "backup";
-				};
-			}
 			inputs.sysc-greet.nixosModules.default
 		];
 		specialArgs = {
-			inherit inputs;
+			inherit inputs pkgs-unstable;
 		};
 	};
   };
