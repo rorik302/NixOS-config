@@ -135,6 +135,7 @@
 	swayidle
 	usbutils
   	kdePackages.kio-extras
+	btop-rocm
   ];
 
   services.gvfs.enable = true;
