@@ -14,6 +14,10 @@ let
 	};
 in 
 {
+	imports = [
+		./modules/yazi.nix
+	];
+	
 	home = {
 		username = "rorik";
 		homeDirectory = "/home/rorik";

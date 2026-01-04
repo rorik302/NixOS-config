@@ -94,7 +94,6 @@
 	ghostty
 	inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
 	firefox
-	yazi
 	pwvucontrol
 	kdePackages.dolphin
 	bluetui
@@ -135,7 +134,10 @@
 	swayidle
 	usbutils
   	kdePackages.kio-extras
+	trash-cli
+	glib
 	btop-rocm
+	jdupes
   ];
 
   services.gvfs.enable = true;
