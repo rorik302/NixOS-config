@@ -2,14 +2,21 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-unstable,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-	./hardware-configuration.nix
-	./disko-config.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disko-config.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   # Use the GRUB 2 boot loader.
@@ -23,10 +30,19 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.extraModprobeConfig = ''
+    		options iwlwifi power_save=0
+    	'';
+
   networking.hostName = "nixos"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi = {
+      powersave = false;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
@@ -46,32 +62,34 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.exportConfiguration = lib.mkForce true;
-	services.xserver.xkb.extraLayouts = {
-		custom_ru = {
-			description = "Custom RU layout";
-			languages = [ "rus" ];
-			symbolsFile = ./keymaps/custom_rus.xkb_symbols;
-		};
-		custom_us = {
-			description = "Custom US layout";
-			languages = [ "us" ];
-			symbolsFile = ./keymaps/custom_us.xkb_symbols;
-		};
-	};
+  services.xserver.xkb.extraLayouts = {
+    custom_ru = {
+      description = "Custom RU layout";
+      languages = [ "rus" ];
+      symbolsFile = ./keymaps/custom_rus.xkb_symbols;
+    };
+    custom_us = {
+      description = "Custom US layout";
+      languages = [ "us" ];
+      symbolsFile = ./keymaps/custom_us.xkb_symbols;
+    };
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplip ];
-  hardware.printers = { 
-  	ensurePrinters = [{
-		name = "HP_M127fn";
-		deviceUri = "hp:/usb/HP_LaserJet_Pro_MFP_M127fn?serial=CNB9HCH1NG";
-		model = "HP/hp-laserjet_pro_mfp_m127fn.ppd.gz";
-		ppdOptions = {
-			PageSize = "A4";
-		};
-	}];
-	ensureDefaultPrinter = "HP_M127fn";
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "HP_M127fn";
+        deviceUri = "hp:/usb/HP_LaserJet_Pro_MFP_M127fn?serial=CNB9HCH1NG";
+        model = "HP/hp-laserjet_pro_mfp_m127fn.ppd.gz";
+        ppdOptions = {
+          PageSize = "A4";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "HP_M127fn";
   };
 
   # Enable sound.
@@ -88,21 +106,25 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rorik = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "i2c" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "i2c"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-    	fish
-	ghostty
-	inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
-	firefox
-	pwvucontrol
-	kdePackages.dolphin
-	bluetui
+      fish
+      ghostty
+      inputs.yandex-browser.packages.x86_64-linux.yandex-browser-stable
+      firefox
+      pwvucontrol
+      kdePackages.dolphin
+      bluetui
+      opencode
     ];
     shell = pkgs.fish;
   };
 
   hardware.bluetooth = {
-	enable = true;
+    enable = true;
   };
   hardware.i2c.enable = true;
 
@@ -111,86 +133,86 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-	git
-	neovim
-	niri
-	inputs.niri-float-sticky.packages.${stdenv.hostPlatform.system}.default
-	xwayland-satellite
-	ly
-	wl-kbptr
-	inputs.awww.packages.${stdenv.hostPlatform.system}.awww
-	lazygit
-	zoxide
-	eza
-	ripgrep
-	fd
-	fzf
-	bat
-	ddcutil
-	i2c-tools
-	sunsetr
-	python3
-	telegram-desktop
-	swayidle
-	usbutils
-  	kdePackages.kio-extras
-	trash-cli
-	glib
-	btop-rocm
-	jdupes
+    git
+    niri
+    inputs.niri-float-sticky.packages.${stdenv.hostPlatform.system}.default
+    xwayland-satellite
+    ly
+    wl-kbptr
+    inputs.awww.packages.${stdenv.hostPlatform.system}.awww
+    lazygit
+    zoxide
+    eza
+    ripgrep
+    fd
+    fzf
+    bat
+    ddcutil
+    i2c-tools
+    sunsetr
+    python3
+    telegram-desktop
+    swayidle
+    usbutils
+    kdePackages.kio-extras
+    trash-cli
+    glib
+    btop-rocm
+    jdupes
+    unzip
+    wget
   ];
+
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 
   services.gvfs.enable = true;
 
   programs.git = {
-  	enable = true;
-	config = {
-		user = {
-			name = "Aleksandr Danilenko";
-			email = "rorik302@gmail.com";
-		};
-		init = {
-			defaultBranch = "main";
-		};
-	};
+    enable = true;
+    config = {
+      user = {
+        name = "Aleksandr Danilenko";
+        email = "rorik302@gmail.com";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+    };
   };
   programs.niri = {
-	enable = true;
+    enable = true;
   };
 
   services.udisks2 = {
-	enable = true;
+    enable = true;
   };
 
   services.sysc-greet = {
-	enable = true;
-	compositor = "niri";
-	settings = {
-		initial_session = {
-			command = "niri-session";
-			user = "rorik";
-		};
-	};
+    enable = true;
+    compositor = "niri";
+    settings = {
+      initial_session = {
+        command = "niri-session";
+        user = "rorik";
+      };
+    };
   };
 
   programs.fish = {
-	enable = true;
-  };
-  programs.neovim = {
-	enable = true;
-	defaultEditor = true;
+    enable = true;
   };
 
-
-home-manager = {
-	useGlobalPkgs = true;
-	useUserPackages = true;
-	users.rorik = import ./home.nix;
-	backupFileExtension = "backup";
-	extraSpecialArgs = {
-		inherit inputs pkgs-unstable;
-	};
-};
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.rorik = import ./home.nix;
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit inputs pkgs-unstable;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -236,4 +258,3 @@ home-manager = {
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-

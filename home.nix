@@ -1,33 +1,34 @@
 { config, pkgs, ... }:
 
 let
-	dotfiles = "${config.home.homeDirectory}/nixos-config/configs";
-	create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-	configs = {
-		fish = "fish";
-		ghostty = "ghostty";
-		lazygit = "lazygit";
-		niri = "niri";
-		swayidle = "swayidle";
-		sunsetr = "sunsetr";
-		wl-kbptr = "wl-kbptr";
-	};
-in 
+  dotfiles = "${config.home.homeDirectory}/nixos-config/configs";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    fish = "fish";
+    ghostty = "ghostty";
+    lazygit = "lazygit";
+    niri = "niri";
+    swayidle = "swayidle";
+    sunsetr = "sunsetr";
+    wl-kbptr = "wl-kbptr";
+  };
+in
 {
-	imports = [
-		./modules/rofi.nix
-		./modules/yazi.nix
-	];
-	
-	home = {
-		username = "rorik";
-		homeDirectory = "/home/rorik";
+  imports = [
+    ./modules/rofi.nix
+    ./modules/neovim.nix
+    ./modules/yazi.nix
+  ];
 
-		stateVersion = "25.11";
-	};
+  home = {
+    username = "rorik";
+    homeDirectory = "/home/rorik";
 
-	xdg.configFile = builtins.mapAttrs (name: subpath: {
-		source = create_symlink "${dotfiles}/${subpath}";
-		recursive = true;
-	}) configs;
+    stateVersion = "25.11";
+  };
+
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = create_symlink "${dotfiles}/${subpath}";
+    recursive = true;
+  }) configs;
 }

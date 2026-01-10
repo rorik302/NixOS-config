@@ -1,0 +1,22 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.opt.clipboard = "unnamedplus"
+vim.opt.confirm = true
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
+vim.opt.mouse = "a"
+vim.opt.scrolloff = 8
+vim.opt.shiftwidth = 2
+vim.opt.sidescrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.smartcase = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.swapfile = false
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.undofile = true
+vim.opt.winborder = "rounded"
+vim.opt.wrap = false
+vim.opt.writebackup = false
