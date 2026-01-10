@@ -1,1 +1,3 @@
 timeout 180 "ddcutil setvcp 10 0 --skip-ddc-checks" resume "ddcutil setvcp 10 50 --skip-ddc-checks"
+
+timeout 600 "niri msg action power-off-monitors" resume "niri msg action power-on-monitors"
