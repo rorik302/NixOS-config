@@ -10,6 +10,7 @@ binds {
 	Mod+Period		{ expel-window-from-column; }
 
 	// Apps
+	Mod+A	{ spawn-sh "rofi -show drun"; }
 	Mod+T	{ spawn "ghostty"; }
 	Mod+B	{ spawn "yandex-browser-stable"; }
 	Mod+G 	{ spawn "wl-kbptr";}

@@ -15,6 +15,7 @@ let
 in 
 {
 	imports = [
+		./modules/rofi.nix
 		./modules/yazi.nix
 	];
 	
