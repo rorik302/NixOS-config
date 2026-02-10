@@ -8,6 +8,7 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  nixpkgs,
   ...
 }:
 
@@ -17,6 +18,8 @@
     ./hardware-configuration.nix
     ./disko-config.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   # Use the GRUB 2 boot loader.
@@ -91,6 +94,10 @@
     ];
     ensureDefaultPrinter = "HP_M127fn";
   };
+  hardware.sane = {
+    enable = true;
+    extraBackends = with pkgs; [ hplipWithPlugin ];
+  };
 
   # Enable sound.
   # services.pulseaudio.enable = true;
@@ -109,6 +116,8 @@
     extraGroups = [
       "wheel"
       "i2c"
+      "scanner"
+      "lp"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       fish
@@ -119,6 +128,7 @@
       kdePackages.dolphin
       bluetui
       opencode
+      naps2
     ];
     shell = pkgs.fish;
   };

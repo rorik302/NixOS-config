@@ -39,7 +39,7 @@
 		inherit system;
 		inherit config;
 	};
-  	pkgs-unstable = import nixpkgs-unstable {
+	pkgs-unstable = import nixpkgs-unstable {
 		inherit system;
 		inherit config;
 	};
